@@ -33,9 +33,9 @@ const GENRES = new Set([
   `Comedy`,
   `Crime`,
   `Drama`,
-  `Historical`,
+  `History`,
   `Horror`,
-  `Science fiction`,
+  `Science`,
   `Western`,
   `Musical`
 ]);

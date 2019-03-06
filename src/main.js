@@ -43,7 +43,7 @@ Array.from(filtersList).forEach((elem) => {
 
 Array.from(filmListExtra).forEach((elem) => {
   elem.insertAdjacentHTML(`beforeend`, `
-    ${makeCard(`New Film Extra`, true)}
-    ${makeCard(`New Film Extra`, true)}
+    ${makeCard(cardsArray[0], true)}
+    ${makeCard(cardsArray[0], true)}
   `);
 });
