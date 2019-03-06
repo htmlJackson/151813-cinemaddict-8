@@ -1,6 +1,6 @@
 import makeFilter from './make-filter.js';
 import makeCard from './make-card.js';
-import {card} from './data.js';
+import {cardsArray} from './data.js';
 
 const mainNavigation = document.querySelector(`.main-navigation`);
 const filmListCOntainer = document.querySelector(`.films-list .films-list__container`);
@@ -14,10 +14,10 @@ mainNavigation.insertAdjacentHTML(`beforeend`, `
   ${makeFilter(`Stats`, 0, false, true)}
 `);
 
-const generateRandomCards = (count = 7) => {
+const generateRandomCards = () => {
   let result = ``;
 
-  for (let i = 0; i < count; i++) {
+  for (const card of cardsArray) {
     result += makeCard(card);
   }
 
