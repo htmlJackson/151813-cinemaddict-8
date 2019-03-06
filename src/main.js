@@ -1,8 +1,9 @@
 import makeFilter from './make-filter.js';
 import makeCard from './make-card.js';
+import {cardsArray} from './data.js';
 
 const mainNavigation = document.querySelector(`.main-navigation`);
-const filmListCOntainer = document.querySelector(`.films-list .films-list__container`);
+const filmListContainer = document.querySelector(`.films-list .films-list__container`);
 const filmListExtra = document.querySelectorAll(`.films-list--extra .films-list__container`);
 
 mainNavigation.insertAdjacentHTML(`beforeend`, `
@@ -13,36 +14,36 @@ mainNavigation.insertAdjacentHTML(`beforeend`, `
   ${makeFilter(`Stats`, 0, false, true)}
 `);
 
-const generateRandomCards = (count = 7) => {
+const generateRandomCards = () => {
   let result = ``;
 
-  for (let i = 0; i < count; i++) {
-    result += makeCard(`Random film`);
+  for (const card of cardsArray) {
+    result += makeCard(card);
   }
 
   return result;
 };
 
 const clearBoard = () => {
-  while (filmListCOntainer.firstChild) {
-    filmListCOntainer.removeChild(filmListCOntainer.firstChild);
+  while (filmListContainer.firstChild) {
+    filmListContainer.removeChild(filmListContainer.firstChild);
   }
 };
 
-filmListCOntainer.insertAdjacentHTML(`beforeend`, generateRandomCards());
+filmListContainer.insertAdjacentHTML(`beforeend`, generateRandomCards());
 
 const filtersList = document.querySelectorAll(`.main-navigation__item`);
 
 Array.from(filtersList).forEach((elem) => {
   elem.addEventListener(`click`, () => {
     clearBoard();
-    filmListCOntainer.insertAdjacentHTML(`beforeend`, generateRandomCards(Math.floor((Math.random() * 10) + 1)));
+    filmListContainer.insertAdjacentHTML(`beforeend`, generateRandomCards(Math.floor((Math.random() * 10) + 1)));
   });
 });
 
 Array.from(filmListExtra).forEach((elem) => {
   elem.insertAdjacentHTML(`beforeend`, `
-    ${makeCard(`New Film Extra`, true)}
-    ${makeCard(`New Film Extra`, true)}
+    ${makeCard(cardsArray[0], true)}
+    ${makeCard(cardsArray[0], true)}
   `);
 });
