@@ -1,6 +1,6 @@
 import Util from './util.js';
 
-const TITLES = new Set([
+const TITLES = [
   `The Shawshank Redemption`,
   `The Green Mile`,
   `Forrest Gump`,
@@ -16,18 +16,18 @@ const TITLES = new Set([
   `The Godfather`,
   `Pulp Fiction`,
   `The Prestige`
-]);
+];
 
-const POSTERS = new Set([
+const POSTERS = [
   `accused`,
   `blackmail`,
   `blue-blazes`,
   `fuga-da-new-york`,
   `moonrise`,
   `three-friends`
-]);
+];
 
-const GENRES = new Set([
+const GENRES = [
   `Action`,
   `Adventure`,
   `Comedy`,
@@ -38,11 +38,13 @@ const GENRES = new Set([
   `Science`,
   `Western`,
   `Musical`
-]);
+];
 
 const FISH_TEXT = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra. Nullam nunc ex, convallis sed finibus eget, sollicitudin eget ante. Phasellus eros mauris, condimentum sed nibh vitae, sodales efficitur ipsum. Sed blandit, eros vel aliquam faucibus, purus ex euismod diam, eu luctus nunc ante ut dui. Sed sed nisi sed augue convallis suscipit in sed felis. Aliquam erat volutpat. Nunc fermentum tortor ac porta dapibus. In rutrum ac purus sit amet tempus.`;
 
-const TextSentenses = {
+const FISH_ARRAY = FISH_TEXT.split(`.`);
+
+const TextSentences = {
   MIN: 1,
   MAX: 3
 };
@@ -67,16 +69,15 @@ const NUMBER_OF_CARDS = 7;
 
 export const card = {
   get title() {
-    return Util.getRandomSetItem(TITLES);
+    return Util.getRandomArrayItem(TITLES);
   },
   get picture() {
-    return `images/posters/${Util.getRandomSetItem(POSTERS)}.jpg`;
+    return `images/posters/${Util.getRandomArrayItem(POSTERS)}.jpg`;
   },
   get description() {
-    const fishArray = FISH_TEXT.split(`.`);
     const resultArray = [];
-    for (let i = 0; i < Util.getRandomInteger(TextSentenses.MIN, TextSentenses.MAX); i++) {
-      resultArray.push(fishArray[Util.getRandomIndex(fishArray.length)]);
+    for (let i = 0; i < Util.getRandomInteger(TextSentences.MIN, TextSentences.MAX); i++) {
+      resultArray.push(Util.getRandomArrayItem(FISH_ARRAY));
     }
     return resultArray.join(`.`);
   },
@@ -91,7 +92,7 @@ export const card = {
     return `${Math.floor(generatedDuration / MINS_IN_HOUR)}h ${generatedDuration % MINS_IN_HOUR}m`;
   },
   get genre() {
-    return Util.getRandomSetItem(GENRES);
+    return Util.getRandomArrayItem(GENRES);
   },
   get comments() {
     return Util.getRandomIndex(COMMENTS_RANDOM_COUNTER);

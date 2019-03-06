@@ -10,5 +10,8 @@ export default {
   },
   getRandomSetItem(set) {
     return [...set][this.getRandomIndex(set.size)];
+  },
+  getRandomArrayItem(array) {
+    return array[this.getRandomIndex(array.length)];
   }
 };
