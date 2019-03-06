@@ -1,5 +1,6 @@
 import makeFilter from './make-filter.js';
 import makeCard from './make-card.js';
+import {card} from './data.js';
 
 const mainNavigation = document.querySelector(`.main-navigation`);
 const filmListCOntainer = document.querySelector(`.films-list .films-list__container`);
@@ -17,7 +18,7 @@ const generateRandomCards = (count = 7) => {
   let result = ``;
 
   for (let i = 0; i < count; i++) {
-    result += makeCard(`Random film`);
+    result += makeCard(card);
   }
 
   return result;

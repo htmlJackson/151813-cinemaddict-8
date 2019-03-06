@@ -1,4 +1,7 @@
 export default {
+  getRandomInteger(min, max) {
+    return Math.floor(min + Math.random() * (max + 1 - min));
+  },
   getRandomIndex(n) {
     return Math.floor(Math.random() * n);
   },
