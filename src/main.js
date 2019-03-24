@@ -1,5 +1,4 @@
 import makeFilter from './make-filter.js';
- import makeCard from './make-card.js';
 import {dataCards} from './data.js';
 import Card from './card.js';
 import Popup from './popup.js';
@@ -28,7 +27,7 @@ const generateRandomCards = () => {
         cardPopup.unrender();
       }
     };
-  }
+  };
 };
 
 const clearBoard = () => {

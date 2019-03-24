@@ -183,7 +183,7 @@ class Popup {
           </div>
         </section>
       </form>
-    </section>`
+    </section>`;
   }
 
   get element() {
@@ -197,7 +197,7 @@ class Popup {
 
   render() {
     if (this._element) {
-      container.removeChild(this._element);
+      document.body.removeChild(this._element);
       this._element = null;
     }
 
