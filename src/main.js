@@ -25,9 +25,9 @@ const generateRandomCards = () => {
       cardPopup.render();
       cardPopup.onClick = () => {
         cardPopup.unrender();
-      }
+      };
     };
-  };
+  }
 };
 
 const clearBoard = () => {
