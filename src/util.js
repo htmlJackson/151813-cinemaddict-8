@@ -13,5 +13,10 @@ export default {
   },
   getRandomArrayItem(array) {
     return array[this.getRandomIndex(array.length)];
+  },
+  createDivElement(template) {
+    const newElement = document.createElement(`div`);
+    newElement.innerHTML = template;
+    return newElement.firstChild;
   }
 };
