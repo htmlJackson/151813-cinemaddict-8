@@ -99,10 +99,10 @@ export const card = {
   }
 };
 
-const cardsArray = [];
+const dataCards = [];
 
 for (let i = 0; i < NUMBER_OF_CARDS; i++) {
-  cardsArray.push(card);
+  dataCards.push(card);
 }
 
-export {cardsArray};
+export {dataCards};
