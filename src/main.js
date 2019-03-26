@@ -22,7 +22,7 @@ const generateRandomCards = () => {
     cardComponent.render(filmListContainer);
 
     cardComponent.onClick = () => {
-      cardPopup.render();
+      cardPopup.render(document.body);
       cardPopup.onClick = () => {
         cardPopup.unrender();
       };

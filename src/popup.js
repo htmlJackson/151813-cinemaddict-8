@@ -1,6 +1,7 @@
-import Util from './util.js';
-class Popup {
+import Component from './component.js';
+class Popup extends Component {
   constructor(data) {
+    super();
     this._title = data.title;
     this._rating = data.rating;
     this._year = data.year;
@@ -9,8 +10,10 @@ class Popup {
     this._picture = data.picture;
     this._description = data.description;
     this._comments = data.comments;
+  }
 
-    this._element = null;
+  set onClick(fn) {
+    this._onClick = fn;
   }
 
   _onButtonClick() {
@@ -19,6 +22,15 @@ class Popup {
     }
   }
 
+  bind() {
+    this._element.querySelector(`.film-details__close-btn`)
+      .addEventListener(`click`, this._onButtonClick.bind(this));
+  }
+
+  unrender() {
+    document.body.removeChild(this._element);
+    this._element = null;
+  }
   get template() {
     return `<section class="film-details">
       <form class="film-details__inner" action="" method="get">
@@ -186,34 +198,6 @@ class Popup {
     </section>`;
   }
 
-  get element() {
-    return this._element;
-  }
-
-  bind() {
-    this._element.querySelector(`.film-details__close-btn`)
-      .addEventListener(`click`, this._onButtonClick.bind(this));
-  }
-
-  render() {
-    if (this._element) {
-      document.body.removeChild(this._element);
-      this._element = null;
-    }
-
-    this._element = Util.createDivElement(this.template);
-    document.body.appendChild(this._element);
-    this.bind();
-  }
-
-  unrender() {
-    document.body.removeChild(this._element);
-    this._element = null;
-  }
-
-  set onClick(fn) {
-    this._onClick = fn;
-  }
 }
 
 export {Popup as default};

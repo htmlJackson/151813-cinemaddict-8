@@ -1,6 +1,7 @@
-import Util from './util.js';
-class Card {
+import Component from './component.js';
+class Card extends Component {
   constructor(data) {
+    super();
     this._title = data.title;
     this._rating = data.rating;
     this._year = data.year;
@@ -9,14 +10,21 @@ class Card {
     this._picture = data.picture;
     this._description = data.description;
     this._comments = data.comments;
+  }
 
-    this._element = null;
+  set onClick(fn) {
+    this._onClick = fn;
   }
 
   _onButtonClick() {
     if (typeof this._onClick === `function`) {
       this._onClick();
     }
+  }
+
+  bind() {
+    this._element.querySelector(`.film-card__comments`)
+      .addEventListener(`click`, this._onButtonClick.bind(this));
   }
 
   get template() {
@@ -34,34 +42,6 @@ class Card {
     </article>`;
   }
 
-  get element() {
-    return this._element;
-  }
-
-  bind() {
-    this._element.querySelector(`.film-card__comments`)
-      .addEventListener(`click`, this._onButtonClick.bind(this));
-  }
-
-  render(container) {
-    if (this._element) {
-      container.removeChild(this._element);
-      this._element = null;
-    }
-
-    this._element = Util.createDivElement(this.template);
-    container.appendChild(this._element);
-
-    this.bind();
-  }
-
-  unrender() {
-    this._element = null;
-  }
-
-  set onClick(fn) {
-    this._onClick = fn;
-  }
 }
 
 export {Card as default};
